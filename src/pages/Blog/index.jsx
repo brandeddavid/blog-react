@@ -17,6 +17,7 @@ class Blog extends Component {
       }));
     });
   }
+  
   render() {
     const { posts } = this.state;
     const postCards = posts.map(post => {
