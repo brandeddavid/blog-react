@@ -17,9 +17,20 @@ export const getPost = id => {
   return axios
     .get(`${baseURL}/posts/${id}`)
     .then(response => {
-      return { message: 'success', data: response.data }
+      return { message: 'success', data: response.data };
     })
     .catch(error => {
-      return { message: 'error', data: error.message }
+      return { message: 'error', data: error.message };
+    });
+};
+
+export const getUser = id => {
+  return axios
+    .get(`${baseURL}/users/${id}`)
+    .then(response => {
+      return { message: 'success', data: response.data };
     })
-}
+    .catch(error => {
+      return { message: 'error', error: error.message };
+    });
+};
