@@ -8,11 +8,13 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
+        <div>
           <Navbar />
-          <Route exact path="/" component={Home} />
-          <Route path="/blog" component={Blog} />
-        </Switch>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/blog" component={Blog} />
+          </Switch>
+        </div>
       </BrowserRouter>
     );
   }
