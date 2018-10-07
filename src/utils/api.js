@@ -20,7 +20,7 @@ export const getPost = id => {
       return { message: 'success', data: response.data };
     })
     .catch(error => {
-      return { message: 'error', data: error.message };
+      return { message: 'error', error: error.message };
     });
 };
 
