@@ -12,3 +12,14 @@ export const getPosts = () => {
       return { message: 'error', error: error.message };
     });
 };
+
+export const getPost = id => {
+  return axios
+    .get(`${baseURL}/posts/${id}`)
+    .then(response => {
+      return { message: 'success', data: response.data }
+    })
+    .catch(error => {
+      return { message: 'error', data: error.message }
+    })
+}
