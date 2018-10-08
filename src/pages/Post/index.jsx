@@ -5,33 +5,32 @@ class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      post: [],
+      post: {},
       error: null,
       userId: null,
-      publisher: 'David Mwangi'
+      publisher: ''
     };
   }
 
   componentDidMount() {
     const id = this.props.match.params.postId;
     getPost(id).then(response => {
-      console.log(response);
-      this.setState(() => ({
-        post: response.data,
-        userId: response.data.userId,
-        error: null
-      }));
+      this.setState(
+        {
+          post: response.data,
+          userId: response.data.userId,
+          error: null
+        },
+        () => this.getPublisher(this.state.userId)
+      );
     });
   }
 
-  getPublisher = () =>{
-    getUser(this.state.userId).then(response => {
-      console.log('===>', response);
-      this.setState(() => ({ publisher: response.data }));
+  getPublisher = id => {
+    getUser(id).then(response => {
+      this.setState({ publisher: response.data.name });
     });
-  }
-
-  
+  };
 
   render() {
     const { post, publisher } = this.state;
