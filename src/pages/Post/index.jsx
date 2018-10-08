@@ -8,7 +8,7 @@ class Post extends Component {
       post: [],
       error: null,
       userId: null,
-      publisher: ''
+      publisher: 'David Mwangi'
     };
   }
 
@@ -22,12 +22,16 @@ class Post extends Component {
         error: null
       }));
     });
+  }
 
+  getPublisher = () =>{
     getUser(this.state.userId).then(response => {
       console.log('===>', response);
       this.setState(() => ({ publisher: response.data }));
     });
   }
+
+  
 
   render() {
     const { post, publisher } = this.state;
