@@ -1,3 +1,7 @@
+/**
+ * Single post component
+ */
+
 import React, { Component } from 'react';
 import { getPost, getUser } from '../../utils/api';
 
@@ -26,6 +30,13 @@ class Post extends Component {
     });
   }
 
+  /**
+   * Function calls network call function to get user info
+   * 
+   * @param {string} id
+   * 
+   * @returns {void}
+   */
   getPublisher = id => {
     getUser(id).then(response => {
       this.setState({ publisher: response.data.name });
